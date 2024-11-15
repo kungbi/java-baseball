@@ -31,21 +31,6 @@ public class RetryInputUtil {
             } catch (IllegalArgumentException error) {
                 OutputView.printError(error.getMessage());
             }
-            retryLogics(userInputReader, parser, validator);
-
-        }
-    }
-
-    private static String retryLogics(Supplier<String> userInputReader, Consumer<String> validator) {
-        while (true) {
-            try {
-                String userInput = userInputReader.get();
-                validator.accept(userInput);
-                return userInput;
-            } catch (IllegalArgumentException error) {
-//                OutputView.printError(error.getMessage());
-            }
-
         }
     }
 }

@@ -32,16 +32,19 @@ public class GameController {
     }
 
     private boolean startTurn() {
-        List<Integer> userNumbers = RetryInputUtil.getUserNumbers();
-        SubmitAnswerOutputDto submitAnswerOutputDto = this.gameService.submitAnswer(
-                new SubmitAnswerInputDto(userNumbers));
+        try {
+            List<Integer> userNumbers = RetryInputUtil.getUserNumbers();
+            SubmitAnswerOutputDto submitAnswerOutputDto = this.gameService.submitAnswer(
+                    new SubmitAnswerInputDto(userNumbers));
 
-        Map<Score, Integer> score = submitAnswerOutputDto.score();
-        OutputView.printResult(score);
+            Map<Score, Integer> score = submitAnswerOutputDto.score();
+            OutputView.printResult(score);
 
-        if (score.get(Score.STRIKE) == 3) {
-            return true;
+            return score.get(Score.STRIKE) == 3;
+
+        } catch (IllegalArgumentException error) {
+            OutputView.printError(error.getMessage());
+            return false;
         }
-        return false;
     }
 }

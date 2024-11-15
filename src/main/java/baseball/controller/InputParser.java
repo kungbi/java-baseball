@@ -9,7 +9,7 @@ public class InputParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("문자를 입력할 수 없습니다.", e);
         }
     }
 
