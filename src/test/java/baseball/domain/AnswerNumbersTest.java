@@ -33,6 +33,11 @@ class AnswerNumbersTest {
                         List.of(1, 2, 3),
                         List.of(3, 2, 1),
                         List.of(1, 2, 0)
+                ),
+                Arguments.of(
+                        List.of(1, 2, 3),
+                        List.of(4, 5, 6),
+                        List.of(0, 0, 3)
                 )
         );
     }

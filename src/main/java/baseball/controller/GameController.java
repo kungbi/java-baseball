@@ -4,6 +4,7 @@ import baseball.config.Score;
 import baseball.dto.SubmitAnswerDto.SubmitAnswerInputDto;
 import baseball.dto.SubmitAnswerDto.SubmitAnswerOutputDto;
 import baseball.service.GameService;
+import baseball.view.OutputView;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +22,13 @@ public class GameController {
     }
 
     private void startGame() {
+        OutputView.printStartMessage();
         while (true) {
             if (this.startTurn()) {
                 break;
             }
         }
+        OutputView.printEndMessage();
     }
 
     private boolean startTurn() {
@@ -34,9 +37,7 @@ public class GameController {
                 new SubmitAnswerInputDto(userNumbers));
 
         Map<Score, Integer> score = submitAnswerOutputDto.score();
-        for (Map.Entry<Score, Integer> entry : score.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        OutputView.printResult(score);
 
         if (score.get(Score.STRIKE) == 3) {
             return true;
