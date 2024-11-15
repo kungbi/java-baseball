@@ -8,8 +8,15 @@ import java.util.List;
 
 public class DependencyInjector {
     public GameController createGameController() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        GameService gameService = new GameService(new AnswerNumbers(numbers));
+        AnswerNumbers answerNumbers = createAnswerNumbers();
+        GameService gameService = new GameService(answerNumbers);
+
         return new GameController(gameService);
+    }
+
+    private static AnswerNumbers createAnswerNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Config.MIN_RANDOM_NUMBER.getInt(),
+                Config.MAX_RANDOM_NUMBER.getInt(), Config.NUMBER_OF_RANDOM_NUMBER.getInt());
+        return new AnswerNumbers(numbers);
     }
 }
