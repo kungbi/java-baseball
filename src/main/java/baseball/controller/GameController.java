@@ -21,10 +21,10 @@ public class GameController {
     }
 
     private void startGame() {
-        boolean win = false;
-
-        while (win == false) {
-            win = this.startTurn();
+        while (true) {
+            if (this.startTurn()) {
+                break;
+            }
         }
     }
 
