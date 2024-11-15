@@ -1,9 +1,9 @@
 package baseball.domain;
 
 import baseball.config.Score;
-import baseball.exception.AnswerNumberDuplicateException;
-import baseball.exception.AnswerNumberRangeException;
-import baseball.exception.AnswerNumberSizeException;
+import baseball.exception.GameNumberDuplicateException;
+import baseball.exception.GameNumberRangeException;
+import baseball.exception.GameNumberSizeException;
 import baseball.exception.NullOrBlankException;
 import java.util.HashMap;
 import java.util.List;
@@ -17,13 +17,13 @@ public class AnswerNumbers {
             throw new NullOrBlankException();
         }
         if (numbers.size() != 3) {
-            throw new AnswerNumberSizeException();
+            throw new GameNumberSizeException();
         }
         if (numbers.stream().distinct().count() != numbers.size()) {
-            throw new AnswerNumberDuplicateException();
+            throw new GameNumberDuplicateException();
         }
         if (numbers.stream().anyMatch(number -> !(1 <= number && number <= 9))) {
-            throw new AnswerNumberRangeException();
+            throw new GameNumberRangeException();
         }
         this.numbers = numbers;
     }

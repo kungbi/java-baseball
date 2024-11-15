@@ -1,13 +1,13 @@
 package baseball.exception;
 
-public class AnswerNumberDuplicateException extends IllegalArgumentException {
+public class GameNumberDuplicateException extends IllegalArgumentException {
     private static final String DEFAULT_MESSAGE = IllegalArgumentMessage.ANSWER_NUMBER_DUPLICATE.getMessage();
 
-    public AnswerNumberDuplicateException() {
+    public GameNumberDuplicateException() {
         super(DEFAULT_MESSAGE);
     }
 
-    public AnswerNumberDuplicateException(String s) {
+    public GameNumberDuplicateException(String s) {
         super(s);
     }
 }

@@ -1,13 +1,13 @@
 package baseball.exception;
 
-public class AnswerNumberRangeException extends IllegalArgumentException {
+public class GameNumberRangeException extends IllegalArgumentException {
     private static final String DEFAULT_MESSAGE = IllegalArgumentMessage.ANSWER_NUMBER_RANGE.getMessage();
 
-    public AnswerNumberRangeException() {
+    public GameNumberRangeException() {
         super(DEFAULT_MESSAGE);
     }
 
-    public AnswerNumberRangeException(String s) {
+    public GameNumberRangeException(String s) {
         super(s);
     }
 }
