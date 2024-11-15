@@ -16,11 +16,19 @@ public class GameController {
 
     public void run() {
         do {
-            this.game();
+            this.startGame();
         } while (RetryInputUtil.getCommand() != 2);
     }
 
-    private void game() {
+    private void startGame() {
+        boolean win = false;
+
+        while (win == false) {
+            win = this.startTurn();
+        }
+    }
+
+    private boolean startTurn() {
         List<Integer> userNumbers = RetryInputUtil.getUserNumbers();
         SubmitAnswerOutputDto submitAnswerOutputDto = this.gameService.submitAnswer(
                 new SubmitAnswerInputDto(userNumbers));
@@ -29,5 +37,10 @@ public class GameController {
         for (Map.Entry<Score, Integer> entry : score.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+
+        if (score.get(Score.STRIKE) == 3) {
+            return true;
+        }
+        return false;
     }
 }
