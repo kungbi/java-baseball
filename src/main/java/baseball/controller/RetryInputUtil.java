@@ -20,8 +20,8 @@ public class RetryInputUtil {
         return retryLogics(InputView::getCommand, InputParser::parseInt, CommandValidator::validate);
     }
 
-    public static <T> T retryLogics(Supplier<String> userInputReader, Function<String, T> parser,
-                                    Consumer<T> validator) {
+    private static <T> T retryLogics(Supplier<String> userInputReader, Function<String, T> parser,
+                                     Consumer<T> validator) {
         while (true) {
             try {
                 String userInput = userInputReader.get();
@@ -36,7 +36,7 @@ public class RetryInputUtil {
         }
     }
 
-    public static String retryLogics(Supplier<String> userInputReader, Consumer<String> validator) {
+    private static String retryLogics(Supplier<String> userInputReader, Consumer<String> validator) {
         while (true) {
             try {
                 String userInput = userInputReader.get();
